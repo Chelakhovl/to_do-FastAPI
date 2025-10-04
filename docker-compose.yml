@@ -14,12 +14,14 @@ services:
       - REDIS_URL=redis://redis:6379/0
       - TIMEZONE=Europe/Kyiv
       - DATABASE_URL=sqlite:///./dev.db
+      - MODEL_PATH=/models/task_priority_model.joblib
     ports:
       - "8000:8000"
     depends_on:
       - redis
     volumes:
       - ./data:/data
+      - ./models:/models
 
   worker:
     build: .

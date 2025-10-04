@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from .api.task_router import router as task_router
+from .api.predict_router import router as predict_router
 from .core.config import settings
 
 
@@ -13,6 +14,7 @@ app = FastAPI(
 
 # Include routers
 app.include_router(task_router)
+app.include_router(predict_router)
 
 
 @app.get("/")
